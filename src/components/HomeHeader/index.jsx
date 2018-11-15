@@ -1,11 +1,23 @@
 import React, {Component} from 'react'
-import './index.less'
+import './style.less'
 class HomeHeader extends Component {
   render(){
     return (
-      <div className="home-header">
-        <p>我是头部</p>
-        <span>我也是</span>
+      <div id="home-header" className="clear-fix">
+          <div className="home-header-left float-left">
+              <span>{this.props.cityName}</span>
+              &nbsp;
+              <i className="icon-angle-down"></i>
+          </div>
+          <div className="home-header-right float-right">
+              <i className="icon-user"></i>
+          </div>
+          <div className="home-header-middle">
+              <div className="search-container">
+                  <i className="icon-search"></i>
+                  <input type="text" placeholder="请输入关键字"/>
+              </div>
+          </div>
       </div>
     )
   }

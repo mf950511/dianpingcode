@@ -9,13 +9,12 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      initDone: false
+      initDone: true
     }
   }
   render(){
     return (
       <div className="app">
-        <p>{this.props.userInfo.cityName}</p>
         {
           this.state.initDone ? 
           <RouterIndex/> : 
@@ -32,11 +31,11 @@ class App extends Component {
     this.props.userInfoActions.updateCityName({
       cityName
     })
-    setTimeout(()=> {
-      this.setState({
-        initDone: true
-      })
-    },2000)
+    // setTimeout(()=> {
+    //   this.setState({
+    //     initDone: true
+    //   })
+    // },2000)
   }
 }
 function mapStateToProps(state){

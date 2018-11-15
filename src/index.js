@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux'
-import './index.css';
+import './static/css/font.css'
+import './static/css/common.less'
 // import App from './containers/index/App';
 // import Mall from './containers/index/index'
 import RouterMap from './router/routerMap'
