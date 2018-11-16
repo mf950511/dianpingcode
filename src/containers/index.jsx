@@ -31,7 +31,9 @@ class App extends Component {
     this.props.userInfoActions.updateCityName({
       cityName
     })
-    this.state.initDone = true
+    this.setState({
+      initDone: true
+    })
     // setTimeout(()=> {
     //   this.setState({
     //     initDone: true

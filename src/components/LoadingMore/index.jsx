@@ -21,7 +21,6 @@ class LoadingMore extends Component {
     function callback(){
       const windowHeight = window.screen.height
       const top = wrapper.getBoundingClientRect().top
-      console.log(top)
       if(top && top < windowHeight) {
         loadMoreFn()
       }
