@@ -6,9 +6,19 @@ const bodyParser = require('koa-bodyparser')
 const server = require('koa-static')
 app.use(bodyParser())
 const adList = require('./mock/ad')
+const homeList = require('./mock/list')
 router.get('/api/ad', async ctx=>{
-  console.log(123)
   ctx.body = adList
+})
+
+router.post('/api/homelist', async ctx=>{
+  let {cityName, page} = ctx.request.body
+  if(page >= 5) {
+    homeList.hasMore = false
+  } else {
+    homeList.hasMore = true
+  }
+  ctx.body = homeList
 })
 app.use(server(__dirname+'/public/image'))
 router.get('/', async ctx=>{

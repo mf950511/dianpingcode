@@ -9,7 +9,7 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      initDone: true
+      initDone: false
     }
   }
   render(){
@@ -31,6 +31,7 @@ class App extends Component {
     this.props.userInfoActions.updateCityName({
       cityName
     })
+    this.state.initDone = true
     // setTimeout(()=> {
     //   this.setState({
     //     initDone: true

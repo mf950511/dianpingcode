@@ -3,7 +3,8 @@ import { connect } from 'react-redux'
 // import Banner from './subpage/banner'
 import HomeHeader from '../../components/HomeHeader/index'
 import Category from '../../components/Category/index'
-import {getAdList} from '../../api/home'
+import Ad from './subpage/Ad'
+import List from './subpage/List'
 import './index.less'
 class Home extends Component {
   render(){
@@ -11,18 +12,14 @@ class Home extends Component {
       <div>
         <HomeHeader cityName={this.props.userInfo.cityName}/>
         <Category/>
+        <div style={{height: '15px'}}></div>
+        <Ad/>
+        <List cityName={this.props.userInfo.cityName}/>
         {/* <Banner/> */}
       </div>
     )
   }
-  getAdList(){
-    getAdList().then(res => {
-      console.log(res)
-    })
-  }
-  componentDidMount(){
-    this.getAdList()
-  }
+  
 }
 
 function mapStateToProps(state) {
