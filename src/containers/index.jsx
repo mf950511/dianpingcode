@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import storage from 'good-storage'
 import {CITYNAME} from '../config/localStorageKey'
+import {withRouter} from 'react-router-dom'
 import RouterIndex from './routerIndex'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
@@ -53,7 +54,7 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-export default connect(
+export default withRouter(connect(
   mapStateToProps,
   mapDispatchToProps
-)(App)
+)(App))

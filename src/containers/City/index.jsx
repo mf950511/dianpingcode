@@ -1,9 +1,52 @@
 import React, {Component} from 'react'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import * as userInfoActions from '../../actions/userInfo'
+import Header from '../../components/Header/index'
+import CurrentCity from '../../components/Currentcity/index'
+import CityList from '../../components/CityList/index'
+import {CITYNAME} from '../../config/localStorageKey'
+import storage from 'good-storage'
+import {hashHistory} from 'react-router-dom'
 class City extends Component {
   render(){
     return (
-      <h1>City</h1>
+      <div>
+        <Header title="选择城市" handleBack={this.handleBack.bind(this)}/>
+        <CurrentCity cityName={this.props.userInfo.cityName}/>
+        <CityList changeFn={this.changeCity.bind(this)}/>
+      </div>
     )
   }
+  handleBack(){
+    window.history.back()
+  }
+  changeCity(newCity){
+    if(newCity == null) {
+      return
+    }
+    this.props.userInfoActions.updateCityName({
+      cityName: newCity
+    })
+    storage.set(CITYNAME, newCity)
+    this.props.history.push('/')
+    // hashHistory.push('/')
+  }
 }
-export default City
+
+function mapStateToProps(state){
+  return {
+    userInfo: state.userInfo
+  }
+}
+
+function mapDispatchToProps(dispatch){
+  return {
+    userInfoActions: bindActionCreators(userInfoActions, dispatch)
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(City)
