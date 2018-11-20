@@ -1,7 +1,12 @@
 import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
+import PropTypes from 'prop-types'
+import SearchInput from '../SearchInput/index'
 import './style.less'
 class HomeHeader extends Component {
+  static contextTypes = {
+    router: PropTypes.object.isRequired
+  }
   render(){
     return (
       <div id="home-header" className="clear-fix">
@@ -19,11 +24,23 @@ class HomeHeader extends Component {
           <div className="home-header-middle">
               <div className="search-container">
                   <i className="icon-search"></i>
-                  <input type="text" placeholder="请输入关键字"/>
+                  <SearchInput enterHandle={this.handleEnter.bind(this)} value=''/>
+                  {/* <input 
+                  type="text" 
+                  placeholder="请输入关键字"
+                  onChange={this.handleChange.bind(this)}
+                  onKeyUp={this.handleKeyUp.bind(this)}
+                  value={this.state.keyWord}
+                  /> */}
               </div>
           </div>
       </div>
     )
+  }
+  handleEnter(value){
+    // this.props.history.push('/')
+    this.context.router.history.push('/search/all/' + encodeURIComponent(value))
+    // this.props.history.push('/search/all/' + this.state.keyWord)
   }
 }
 export default HomeHeader

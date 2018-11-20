@@ -7,7 +7,6 @@ import CurrentCity from '../../components/Currentcity/index'
 import CityList from '../../components/CityList/index'
 import {CITYNAME} from '../../config/localStorageKey'
 import storage from 'good-storage'
-import {hashHistory} from 'react-router-dom'
 class City extends Component {
   render(){
     return (
@@ -29,6 +28,7 @@ class City extends Component {
       cityName: newCity
     })
     storage.set(CITYNAME, newCity)
+    console.log(this)
     this.props.history.push('/')
     // hashHistory.push('/')
   }

@@ -13,6 +13,7 @@ router.get('/api/ad', async ctx=>{
 
 router.post('/api/homelist', async ctx=>{
   let {cityName, page} = ctx.request.body
+  console.log(ctx.request.body)
   if(page >= 5) {
     homeList.hasMore = false
   } else {

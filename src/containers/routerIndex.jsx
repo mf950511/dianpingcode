@@ -12,7 +12,7 @@ class RouterIndex extends Component {
       <Switch>
         <Route exact path="/" component={Home}/>
         <Route path="/city" component={City}/>
-        <Route path='/search' component={Search}/>
+        <Route path='/search/:category/:key' component={Search}/>
         <Route path='/user' component={User}/>
         <Route path="/detail/:id" component={Detail}/>
         <Route component={NotFound}/>
