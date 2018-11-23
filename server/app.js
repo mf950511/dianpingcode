@@ -7,10 +7,16 @@ const server = require('koa-static')
 app.use(bodyParser())
 const adList = require('./mock/ad')
 const homeList = require('./mock/list')
+
+const detailInfo = require('./mock/detail/info')
+const commentList = require('./mock/detail/comment')
+// 获取广告列表
 router.get('/api/ad', async ctx=>{
   ctx.body = adList
 })
 
+
+// 获取首页商户列表
 router.post('/api/homelist', async ctx=>{
   let {cityName, page} = ctx.request.body
   console.log(ctx.request.body)
@@ -21,6 +27,25 @@ router.post('/api/homelist', async ctx=>{
   }
   ctx.body = homeList
 })
+// 获取商户详情
+router.get('/api/detailInfo', async ctx=> {
+  console.log(ctx.request.query)
+  ctx.body = detailInfo
+})
+
+// 获取商户评论列表
+router.post('/api/commentList', async ctx=>{
+  console.log(ctx.request.body)
+  let {page} = ctx.request.body
+  if(page >= 5) {
+    commentList.hasMore = false
+  } else {
+    commentList.hasMore = true
+  }
+  ctx.body = commentList
+})
+
+// 设置静态
 app.use(server(__dirname+'/public/image'))
 router.get('/', async ctx=>{
   ctx.body ='123'

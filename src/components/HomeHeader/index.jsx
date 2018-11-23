@@ -8,6 +8,7 @@ class HomeHeader extends Component {
     router: PropTypes.object.isRequired
   }
   render(){
+    const oldUrl = this.context.router.route.location.pathname
     return (
       <div id="home-header" className="clear-fix">
           <Link to="/city">
@@ -19,7 +20,9 @@ class HomeHeader extends Component {
           </Link>
           
           <div className="home-header-right float-right">
-              <i className="icon-user"></i>
+            <Link to={{pathname: '/login', query: {router: oldUrl}}}>
+                <i className="icon-user"></i>
+            </Link>
           </div>
           <div className="home-header-middle">
               <div className="search-container">
@@ -39,7 +42,7 @@ class HomeHeader extends Component {
   }
   handleEnter(value){
     // this.props.history.push('/')
-    this.context.router.history.push('/search/all/' + encodeURIComponent(value))
+    this.context.router.history.push({pathname: '/search/all', query: {key: encodeURIComponent(value)}})
     // this.props.history.push('/search/all/' + this.state.keyWord)
   }
 }

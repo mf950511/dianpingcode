@@ -1,10 +1,12 @@
 import React, {Component} from 'react'
+import { Link } from 'react-router-dom'
 import './style.less'
 class Item extends Component {
   render(){
     const data = this.props.itemData
     return (
       <div className="list-item clear-fix">
+        <Link to={`/detail/${data.id}`}>
           <div className="item-img-container float-left">
               <img src={data.img} alt={data.title}/>
           </div>
@@ -21,6 +23,7 @@ class Item extends Component {
                   <span className="mumber float-right">已售{data.mumber}</span>
               </div>
           </div>
+        </Link>
       </div>
     )
   }

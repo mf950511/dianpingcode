@@ -24,7 +24,7 @@ class City extends Component {
     if(newCity == null) {
       return
     }
-    this.props.userInfoActions.updateCityName({
+    this.props.userInfoActions.update({
       cityName: newCity
     })
     storage.set(CITYNAME, newCity)

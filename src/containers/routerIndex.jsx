@@ -5,6 +5,7 @@ import City from './City/index'
 import Detail from './Detail/index'
 import Search from './Search/index'
 import User from './User/index'
+import Login from './Login/index'
 import NotFound from './NotFound/index'
 class RouterIndex extends Component {
   render(){
@@ -12,9 +13,10 @@ class RouterIndex extends Component {
       <Switch>
         <Route exact path="/" component={Home}/>
         <Route path="/city" component={City}/>
-        <Route path='/search/:category/:key' component={Search}/>
+        <Route path='/search/:category' component={Search}/>
         <Route path='/user' component={User}/>
         <Route path="/detail/:id" component={Detail}/>
+        <Route path="/login" component={Login}/>
         <Route component={NotFound}/>
       </Switch>
     )

@@ -12,7 +12,7 @@ class SearchHeader extends Component {
           <div className="input-container">
               <i className="icon-search"></i>
               &nbsp;
-              <SearchInput value={this.props.keyword || ''} enterHandle={this.handleEnter.bind(this)}/>
+              <SearchInput value={this.props.keyWord || ''} enterHandle={this.handleEnter.bind(this)}/>
           </div>
       </div>
     )
@@ -24,10 +24,11 @@ class SearchHeader extends Component {
     this.context.router.history.goBack()
   }
   handleEnter(value){
-    this.context.router.history.push('/search/all/' + encodeURIComponent(value))
+    this.context.router.history.replace({pathname: '/search/all', query: {key: encodeURIComponent(value)}})
+    // this.context.router.history.push('/search/' + encodeURIComponent(value))
   }
   componentDidMount(){
-
+    console.log(this.props.keyWord)
   }
 }
 export default SearchHeader

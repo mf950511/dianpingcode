@@ -29,7 +29,7 @@ class App extends Component {
     if(cityName == null) {
       cityName = '成都'
     }
-    this.props.userInfoActions.updateCityName({
+    this.props.userInfoActions.update({
       cityName
     })
     this.setState({
