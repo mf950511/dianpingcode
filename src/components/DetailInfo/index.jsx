@@ -8,7 +8,7 @@ class DetailInfo extends Component {
       <div id="detail-info-container">
           <div className="info-container clear-fix">
               <div className="info-img-container float-left">
-                  <img src={data.img}/>
+                  <img src={data.img} alt=""/>
               </div>
               <div className="info-content">
                   <h1>{data.title}</h1>

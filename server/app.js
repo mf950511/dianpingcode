@@ -10,6 +10,8 @@ const homeList = require('./mock/list')
 
 const detailInfo = require('./mock/detail/info')
 const commentList = require('./mock/detail/comment')
+
+const orderList = require('./mock/orderlist/orderList')
 // 获取广告列表
 router.get('/api/ad', async ctx=>{
   ctx.body = adList
@@ -43,6 +45,19 @@ router.post('/api/commentList', async ctx=>{
     commentList.hasMore = true
   }
   ctx.body = commentList
+})
+
+// 获取用户订单列表
+router.post('/api/orderList', async ctx=>{
+  console.log(ctx.request.body)
+  ctx.body = orderList
+})
+// 生成评价
+router.post('/api/postComment', async ctx=>{
+  console.log(ctx.request.body)
+  ctx.body = {
+    code: 200
+  }
 })
 
 // 设置静态

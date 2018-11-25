@@ -37,10 +37,11 @@ class Login extends Component {
     let userInfo = this.props.userInfo
     userInfo.username = username
     actions.update(userInfo)
+    console.log(this.props.userInfo)
     const query = this.props.location.query
     if(query) {
       const router = query.router
-      this.props.history.push(router)
+      this.props.history.replace(router)
     }else {
       this.goUserPage()
     }
@@ -49,7 +50,7 @@ class Login extends Component {
 
   doCheck(){
     const userInfo = this.props.userInfo
-    if(userInfo.userInfo) {
+    if(userInfo.username) {
       this.goUserPage()
     } else {
       this.setState({

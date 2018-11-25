@@ -19,7 +19,9 @@ class Home extends Component {
       </div>
     )
   }
-  
+  componentDidMount(){
+    console.log(this.props.userInfo)
+  }
 }
 
 function mapStateToProps(state) {

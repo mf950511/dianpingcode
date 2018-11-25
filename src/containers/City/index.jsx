@@ -24,11 +24,11 @@ class City extends Component {
     if(newCity == null) {
       return
     }
-    this.props.userInfoActions.update({
+    let newUserInfo = Object.assign(this.props.userInfo, {
       cityName: newCity
     })
+    this.props.userInfoActions.update(newUserInfo)
     storage.set(CITYNAME, newCity)
-    console.log(this)
     this.props.history.push('/')
     // hashHistory.push('/')
   }
